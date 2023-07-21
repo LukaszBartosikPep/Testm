@@ -2,6 +2,7 @@
 import java.util.Scanner;
 public class Calc
 {
+
 	public void calculate() {
 		System.out.println("Wpisz znak operacji");
 		

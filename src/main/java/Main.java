@@ -4,12 +4,19 @@ public class Main {
 
 
     public static void main(String[] args) {
+
+
+
+        scrapper newScrp =new scrapper();
+
+//        newScrp.connect();
+        newScrp.getElement();
+
+
 //        TaskMngr newObj=new TaskMngr();
 //
 //        newObj.viewAll();
-        Calc calcObj =new Calc();
 
-        calcObj.calculate();
 
 
 //        Scanner scanner = new Scanner(System.in);
