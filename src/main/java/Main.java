@@ -1,16 +1,18 @@
-import java.util.Scanner;
-
 public class Main {
 
 
     public static void main(String[] args) {
 
 
+         Adscraper bookOne=new Adscraper();
 
-        scrapper newScrp =new scrapper();
+        bookOne.allLinks();
+
+
+//        scrapper newScrp =new scrapper();
 
 //        newScrp.connect();
-        newScrp.getElement();
+//        newScrp.printHeaders();
 
 
 //        TaskMngr newObj=new TaskMngr();

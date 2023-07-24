@@ -11,6 +11,7 @@ import java.io.IOException;
 public class scrapper {
 
     private WebDriver driver;
+    private String saved;
     public scrapper(){
         // Set the path to the Internet Explorer driver executable
         System.setProperty("webdriver.ie.driver", "C:/Users/lbartosik/OneDrive - PEPCO/Pulpit/IEDriverServer.exe");
@@ -21,7 +22,7 @@ public class scrapper {
 
 
     }
-    public void getElement() {
+    public void printHeaders() {
         driver.get("https://ksiazkipoangielsku.pl/18-adventure-novels?n=20&id_category=18");
 
 //        String pageTitle = driver.getTitle();
@@ -34,7 +35,7 @@ public class scrapper {
 
         for (WebElement elementy : elements) {
             System.out.println(elementy.getText());
-            String saved = elementy.getText();
+            saved = elementy.getText();
         }
 
         driver.quit();
@@ -42,7 +43,7 @@ public class scrapper {
     }
         public void saveText() {
             try {
-                String filePath = "Data.txt";
+                String filePath = "C:/Users/lbartosik/IdeaProjects/Testm/src/main/java/Data.txt";
                 scrapper scrapper = new scrapper();
                 FileWriter file = new FileWriter(filePath);
                 BufferedWriter buffer = new BufferedWriter(file);
