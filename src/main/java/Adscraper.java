@@ -16,7 +16,7 @@ public class Adscraper {
     private String pageTitle;
     private WebDriver driver;
 
-    private List<String> url =new ArrayList<>();
+    private List<String> urlList =new ArrayList<>();
 
     public Adscraper(int decision){
         System.setProperty("webdriver.ie.driver", "C:/Users/lbartosik/OneDrive - PEPCO/Pulpit/IEDriverServer.exe");
@@ -36,7 +36,7 @@ public class Adscraper {
         for (WebElement elementy : element) {
             urls = elementy.getAttribute("href");
 
-            url.add(urls);
+            urlList.add(urls);
         }
 
 
@@ -45,7 +45,7 @@ public class Adscraper {
 
 
     public String retrieveTitle(){
-        driver.get(url.get(decision));
+        driver.get(urlList.get(decision));
         pageTitle = driver.getTitle();
 
 
@@ -57,7 +57,7 @@ public class Adscraper {
 //
 //    }
     public String retrieveDesc(){
-        driver.get(url.get(decision));
+        driver.get(urlList.get(decision));
         WebElement desc=driver.findElement(By.cssSelector("div.rte p"));
         System.out.println(decision);
 //
