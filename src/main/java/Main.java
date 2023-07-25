@@ -2,11 +2,15 @@ public class Main {
 
 
     public static void main(String[] args) {
+        int decision=3;
+
+         Adscraper bookOne=new Adscraper(decision);
+
+         bookOne.allLinks();
+         bookOne.retrieveTitle();
+         bookOne.retrieveDesc();
 
 
-         Adscraper bookOne=new Adscraper();
-
-        bookOne.allLinks();
 
 
 //        scrapper newScrp =new scrapper();
