@@ -2,13 +2,25 @@ public class Main {
 
 
     public static void main(String[] args) {
-        int decision=3;
+        int decision=1;
+        int secDec=2;
 
          Adscraper bookOne=new Adscraper(decision);
 
          bookOne.allLinks();
          bookOne.retrieveTitle();
          bookOne.retrieveDesc();
+         bookOne.save();
+
+         Adscraper bookTwo=new Adscraper(secDec);
+
+        bookTwo.allLinks();
+        bookTwo.retrieveTitle();
+        bookTwo.retrieveDesc();
+        bookTwo.save();
+
+
+
 
 
 

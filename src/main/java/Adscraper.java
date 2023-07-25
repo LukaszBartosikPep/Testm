@@ -12,6 +12,8 @@ public class Adscraper {
     private int decision;
     private String title;
     public String urls;
+    private String saved;
+    private String pageTitle;
     private WebDriver driver;
 
     private List<String> url =new ArrayList<>();
@@ -19,6 +21,7 @@ public class Adscraper {
     public Adscraper(int decision){
         System.setProperty("webdriver.ie.driver", "C:/Users/lbartosik/OneDrive - PEPCO/Pulpit/IEDriverServer.exe");
         this.driver = new InternetExplorerDriver();
+        this.decision=decision;
 //        String driver ="OK";
     }
     public void allLinks() {
@@ -37,48 +40,37 @@ public class Adscraper {
         }
 
 
-//        System.out.println(url);
-//        WebElement element = driver.findElement(By.id("product_list"));
-//
-////        List<WebElement> elements2=element.findElements(By.className("product_img_link"));
-//        WebElement elements2=element.findElement(By.tagName("h3"));
-//        List<WebElement> elements3=elements2.findElements(By.tagName("a"));
-//        for (WebElement elementy : elements3) {
-//            urls=elementy.getAttribute("href");
-////            urls=elementy.getText();
-//            System.out.println(urls);
-//        }
 
-//        if (urls.contains("http")){
-//            System.out.println("Yes");
-//        }
         }
-//    public int getDecision(){
-//        return decision;
-//    }
 
-    public void retrieveTitle(){
+
+    public String retrieveTitle(){
         driver.get(url.get(decision));
-        String pageTitle = driver.getTitle();
-        System.out.println(pageTitle);
+        pageTitle = driver.getTitle();
 
+
+        return pageTitle;
 
     }
 //
 //    public retrieveImage(){
 //
 //    }
-    public void retrieveDesc(){
+    public String retrieveDesc(){
         driver.get(url.get(decision));
         WebElement desc=driver.findElement(By.cssSelector("div.rte p"));
         System.out.println(decision);
 //
-        System.out.println(desc.getText());
+//        System.out.println(desc.getText());
+        saved= desc.getText();
+
         driver.quit();
+        return saved;
 
     }
-//    public save(){
-//
-//    }
+    public void save(){
+        System.out.println("The title is:  "+pageTitle);
+        System.out.println("The description is:  "+ saved);
+    }
 
     }
