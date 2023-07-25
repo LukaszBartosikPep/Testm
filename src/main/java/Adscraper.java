@@ -32,10 +32,10 @@ public class Adscraper {
         List<WebElement> element = driver.findElements(By.cssSelector("div.center_block h3 a"));
 
 
-//        List<WebElement> element = driver.findElements(By.tagName("h3"));
+
         for (WebElement elementy : element) {
             urls = elementy.getAttribute("href");
-//            urls=elementy.getText();
+
             url.add(urls);
         }
 
