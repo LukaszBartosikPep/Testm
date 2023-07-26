@@ -1,5 +1,4 @@
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
@@ -9,19 +8,19 @@ import java.util.List;
 
 public class Adscraper {
 
-    private int decision;
-    private String title;
+
     public String urls;
-    private String saved;
+    public String saved;
     private String pageTitle;
     private WebDriver driver;
 
+    public int size;
     private List<String> urlList =new ArrayList<>();
 
-    public Adscraper(int decision){
+    public Adscraper(){
         System.setProperty("webdriver.ie.driver", "C:/Users/lbartosik/OneDrive - PEPCO/Pulpit/IEDriverServer.exe");
         this.driver = new InternetExplorerDriver();
-        this.decision=decision;
+
 //        String driver ="OK";
     }
     public void allLinks() {
@@ -38,17 +37,17 @@ public class Adscraper {
 
             urlList.add(urls);
         }
-
+        size=urlList.size();
 
 
         }
 
 
-    public String retrieveTitle(){
-        driver.get(urlList.get(decision));
+    public String retrieveTitle(int i){
+        driver.get(urlList.get(i));
         pageTitle = driver.getTitle();
 
-
+        System.out.println(pageTitle);
         return pageTitle;
 
     }
@@ -56,21 +55,21 @@ public class Adscraper {
 //    public retrieveImage(){
 //
 //    }
-    public String retrieveDesc(){
-        driver.get(urlList.get(decision));
+    public String retrieveDesc(int i){
+        driver.get(urlList.get(i));
         WebElement desc=driver.findElement(By.cssSelector("div.rte p"));
-        System.out.println(decision);
+//        System.out.println(idBook);
 //
-//        System.out.println(desc.getText());
+        System.out.println(desc.getText());
         saved= desc.getText();
-
-        driver.quit();
+//        Save save=new Save(saved);
+//        driver.quit();
         return saved;
 
     }
-    public void save(){
-        System.out.println("The title is:  "+pageTitle);
-        System.out.println("The description is:  "+ saved);
-    }
+//    public void save(){
+//        System.out.println("The title is:  "+pageTitle);
+//        System.out.println("The description is:  "+ saved);
+//    }
 
     }

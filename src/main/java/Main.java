@@ -1,94 +1,33 @@
+import java.util.List;
+
 public class Main {
 
 
     public static void main(String[] args) {
-        int decision=1;
+        int idBook=1;
         int secDec=2;
-
-         Adscraper bookOne=new Adscraper(decision);
+        String title="None";
+        String desc="None";
+         Adscraper bookOne=new Adscraper();
 
          bookOne.allLinks();
-         bookOne.retrieveTitle();
-         bookOne.retrieveDesc();
-         bookOne.save();
+         int size=bookOne.size;
+         System.out.println(size);
+         for(int i=1;i<size-15;i++){
+         title= bookOne.retrieveTitle(i);
+         desc=bookOne.retrieveDesc(i);
 
-         Adscraper bookTwo=new Adscraper(secDec);
-
-        bookTwo.allLinks();
-        bookTwo.retrieveTitle();
-        bookTwo.retrieveDesc();
-        bookTwo.save();
-
+    }
+//         System.out.println(title);
+//         System.out.println(desc);
 
 
 
+         Save saveBook = new Save(title, desc);
 
-
-
-//        scrapper newScrp =new scrapper();
-
-//        newScrp.connect();
-//        newScrp.printHeaders();
-
-
-//        TaskMngr newObj=new TaskMngr();
-//
-//        newObj.viewAll();
-
-
-
-//        Scanner scanner = new Scanner(System.in);
-//
-//
-////		newObj.Init();
-//        newObj.populateArray();
-//        newObj.viewAll();
-//
-//
-//
-//
-//        while (true) {
-//            System.out.println("Aby dodac zadanie wybierz 1.");
-//            System.out.println("Aby usunąć zadanie wybierz 2.");
-//            System.out.println("Aby zaznaczyć zadanie wybierz 3.");
-//
-//            int choice = scanner.nextInt();
-//
-//            switch (choice) {
-//
-//
-//                case 1:
-//
-//                    System.out.println("Wpisz zadanie");
-//
-//                    String noweZadanie = scanner.next();
-//
-//                    newObj.addTasks(noweZadanie);
-//
-//                case 2:
-//                    System.out.println("Które zadanie chcesz usunąć, wpisz numer");
-//                    newObj.viewAll();
-//
-//                    //Wyświetl numery zadań i po wpisaniu numeru usun zadanie
-//                    int numb = scanner.nextInt();
-//                    newObj.del(numb);
-//                    newObj.viewAll();
-//                case 3:
-//                    System.out.println("Które zadanie chcesz zaznaczyć?");
-//                    int sign= scanner.nextInt();
-//                    newObj.mark(sign);
-//                    newObj.viewAll();
-//
-//
-//
-//            }
-//
-//
-//
-//        }
-//
-//
-
+         saveBook.saveTitle();
+         saveBook.saveDesc();
+         saveBook.saveText();
 
 
 
