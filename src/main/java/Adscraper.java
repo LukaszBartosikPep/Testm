@@ -14,8 +14,8 @@ public class Adscraper {
     private String pageTitle;
     private WebDriver driver;
 
-    public int size;
-    private List<String> urlList =new ArrayList<>();
+//    public int size;  //usunac
+    public List<String> urlList =new ArrayList<>();
 
     public Adscraper(){
         System.setProperty("webdriver.ie.driver", "C:/Users/lbartosik/OneDrive - PEPCO/Pulpit/IEDriverServer.exe");
@@ -37,36 +37,63 @@ public class Adscraper {
 
             urlList.add(urls);
         }
-        size=urlList.size();
+        int size=urlList.size();
 
 
         }
 
 
-    public String retrieveTitle(int i){
-        driver.get(urlList.get(i));
-        pageTitle = driver.getTitle();
+        public List<Book> retrieveAll(){  //Jaką tu dać pętle
+        //For loop for all links
+            //and return to Main
+            //Przypisac do nowej listy za pomoca petli.
+            return urlList;
 
-        System.out.println(pageTitle);
-        return pageTitle;
+
+
+        }
+
+//    public String retrieveTitle(int i){
+//        driver.get(urlList.get(i));
+//        pageTitle = driver.getTitle();
+//
+//        System.out.println(pageTitle);
+//        return pageTitle;
+//
+//    }
+
+
+    public Book retrieveBook(int i){
+        driver.get(urlList.get(i));
+        WebElement desc=driver.findElement(By.cssSelector("div.rte p"));
+        pageTitle = driver.getTitle();
+        return new Book(pageTitle, desc.getText()); ///cena, przekazuje do klasy book
+
+
+
 
     }
+//    public Book retrievePrice(int i){
+//
+//        driver.get(urlList.get(i));
+//
+//    }
 //
 //    public retrieveImage(){
 //
 //    }
-    public String retrieveDesc(int i){
-        driver.get(urlList.get(i));
-        WebElement desc=driver.findElement(By.cssSelector("div.rte p"));
-//        System.out.println(idBook);
+//    public String retrieveDesc(int i){
+//        driver.get(urlList.get(i));
+//        WebElement desc=driver.findElement(By.cssSelector("div.rte p"));
+////        System.out.println(idBook);
+////
+//        System.out.println(desc.getText());
+//        saved= desc.getText();
+////        Save save=new Save(saved);
+////        driver.quit();
+//        return saved;
 //
-        System.out.println(desc.getText());
-        saved= desc.getText();
-//        Save save=new Save(saved);
-//        driver.quit();
-        return saved;
-
-    }
+//    }
 //    public void save(){
 //        System.out.println("The title is:  "+pageTitle);
 //        System.out.println("The description is:  "+ saved);

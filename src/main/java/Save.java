@@ -1,31 +1,27 @@
 import java.io.*;
 
 public class Save {
-    public String desc;
-    public String title;
+    public String fileName;
 
-    public Save(String title, String desc) {
-        this.title=title;
-        this.desc=desc;
+    public Save(String fileName) {
+
+        this.fileName=fileName;
+
+
+
+
+//        this.title=title;
+//        this.desc=desc;  //nie opisuje klasy save, save to file
     }
 
-    public String saveTitle() {
-//        System.out.println(title);
-        return title;
-    }
-
-    public String saveDesc() {
-//        System.out.println(desc);
-        return desc;
 
 
-    }
-
-    public void saveText() {
-        System.out.println("Tytuł"+title+"Desc"+desc);
-        try(PrintWriter out =new PrintWriter("Data.txt")){
-            out.println(title);
-            out.println(desc);
+    public void saveBook(Book book) { //Co to jest?
+        System.out.println("Tytuł"+book.getTitle()+"Desc"+book.getDesc());
+        //Czemu przekazuje zmienne z klasy book, zamiast pobierac metode klasy Adscraper
+        try(PrintWriter out =new PrintWriter(fileName)){
+            out.println(book.getTitle());
+            out.println(book.getDesc());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
