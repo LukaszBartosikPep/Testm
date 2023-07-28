@@ -15,8 +15,8 @@ public class Adscraper {
     private WebDriver driver;
 
 //    public int size;  //usunac
-    public List<String> urlList =new ArrayList<>();
-
+   public List<String> urlList =new ArrayList<>();
+    public List<String> sublist =new ArrayList<>();
     public Adscraper(){
         System.setProperty("webdriver.ie.driver", "C:/Users/lbartosik/OneDrive - PEPCO/Pulpit/IEDriverServer.exe");
         this.driver = new InternetExplorerDriver();
@@ -37,66 +37,60 @@ public class Adscraper {
 
             urlList.add(urls);
         }
-        int size=urlList.size();
+        sublist = urlList.subList(urlList.size() - 5, urlList.size());
+        sublist.clear();
+//        sublist = urlList.remove(urlList.size()-7);
+//        int size=urlList.size();
+        System.out.println(urlList);
 
 
         }
 
 
-        public List<Book> retrieveAll(){  //Jaką tu dać pętle
+        public List<Book> retrieveAll(){ ///Dane o wszystkich ksiazkach
+
+            List<Book> nList=new ArrayList<>();
+
+            for (String url: urlList){   //Przechodzi przez wszystkie url w liście: ekwiwalent size.
+
+
+                 nList.add(retrieveBook(url));     //Dodaje do nowej listy wszystkie desc i title.
+                //ur jest w tym przypadku wszystkie url po kolei z urlList.
+            }
+
+        return nList;    //Zwrócona lista jest typu Book
+
+        //Przez wszystkie linki i pobierac jedna ksiazke
+            //Zapsiywac do nowej listy
+        //Jaką tu dać pętle
         //For loop for all links
             //and return to Main
             //Przypisac do nowej listy za pomoca petli.
-            return urlList;
+
 
 
 
         }
 
-//    public String retrieveTitle(int i){
-//        driver.get(urlList.get(i));
-//        pageTitle = driver.getTitle();
-//
-//        System.out.println(pageTitle);
-//        return pageTitle;
-//
+
 //    }
 
-
-    public Book retrieveBook(int i){
-        driver.get(urlList.get(i));
+    public Book retrieveBook(String url){ //Ta metoda kiedy jest uruchamiana przekazuje zmienne do Book.
+        //
+        driver.get(url);
         WebElement desc=driver.findElement(By.cssSelector("div.rte p"));
+        WebElement price=driver.findElement(By.id("our_price_display"));
         pageTitle = driver.getTitle();
-        return new Book(pageTitle, desc.getText()); ///cena, przekazuje do klasy book
-
-
-
+        return new Book(pageTitle, desc.getText(), price.getText());
+        //Przekazuje zmienne poprzez konstruktor
 
     }
-//    public Book retrievePrice(int i){
 //
-//        driver.get(urlList.get(i));
+
+
+
+
+
 //
-//    }
-//
-//    public retrieveImage(){
-//
-//    }
-//    public String retrieveDesc(int i){
-//        driver.get(urlList.get(i));
-//        WebElement desc=driver.findElement(By.cssSelector("div.rte p"));
-////        System.out.println(idBook);
-////
-//        System.out.println(desc.getText());
-//        saved= desc.getText();
-////        Save save=new Save(saved);
-////        driver.quit();
-//        return saved;
-//
-//    }
-//    public void save(){
-//        System.out.println("The title is:  "+pageTitle);
-//        System.out.println("The description is:  "+ saved);
-//    }
 
     }

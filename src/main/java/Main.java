@@ -5,44 +5,29 @@ public class Main {
 
 
     public static void main(String[] args) {
-//        int idBook=1;
-//        int secDec=2;
-//        String title="None";
-//        String desc="None";
+
          Adscraper mainScrap=new Adscraper();
 
         mainScrap.allLinks();
-//         int size=mainScrap.size;
-        ArrayList<String> list = (ArrayList<String>) mainScrap.urlList;
-         System.out.println(list);
+        mainScrap.retrieveAll();//Zwraca liste
+        Save saveIt = new Save("Data.txt");
 
-        Book collBook =new Book();
+        saveIt.saveBook();
+
+        for(Book book:mainScrap.retrieveAll()){   //Czemu tutaj jest Book book i co to jest.
+            //Book to obiekt klasy Book, book to przypadkowa zmienna
+            System.out.println(book.getTitle());
+            //Pętla idzie poprzez wszystkie elementy
+            System.out.println(book.getDesc());
+            System.out.println(book.getPrice());
 
 
-        Save saveBook = new Save("Data.txt");
-//        for( String item : list.size()) {
-            saveBook.saveBook(mainScrap.retrieveBook(4)); //Przekazuje do metody saveBook w Save
-            //Nie powinna przekazywac najpierw do Book?
+        }
 
-//         for(int i=1;i<size-15;i++){
-//         title= mainScrap.retrieveTitle(i);
-//         desc=mainScrap.retrieveDesc(i);
+
 //
-//    }
-//         System.out.println(title);
-//         System.out.println(desc);
-
-//Foreach for all books and assign to book(?) and pass to save
-
-
-
-
-
-//         saveBook.saveTitle();
-//         saveBook.saveDesc();
-//         saveBook.saveText();
-
-
+        ArrayList<String> list = (ArrayList<String>) mainScrap.urlList;
+//
 
     }
 }
