@@ -10,7 +10,7 @@ public class Adscraper {
 
 
     public String urls;
-    public String saved;
+
     private String pageTitle;
     private WebDriver driver;
 
@@ -41,7 +41,7 @@ public class Adscraper {
         sublist.clear();
 //        sublist = urlList.remove(urlList.size()-7);
 //        int size=urlList.size();
-        System.out.println(urlList);
+//        System.out.println(urlList);
 
 
         }
@@ -82,7 +82,8 @@ public class Adscraper {
         WebElement price=driver.findElement(By.id("our_price_display"));
         pageTitle = driver.getTitle();
         return new Book(pageTitle, desc.getText(), price.getText());
-        //Przekazuje zmienne poprzez konstruktor
+
+
 
     }
 //

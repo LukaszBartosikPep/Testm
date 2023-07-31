@@ -20,7 +20,9 @@ public class Book {
     public String getTitle(){
 
 
-        title="changed";
+
+
+        ///Better change value with setters
         return title;
     }
     public String getDesc(){

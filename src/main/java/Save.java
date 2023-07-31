@@ -1,5 +1,5 @@
 import java.io.*;
-
+import java.util.List;
 public class Save {
     public String fileName;
 
@@ -15,14 +15,20 @@ public class Save {
 
 
 
-    public void saveBook(Book book) { //Przekazywany jako argument jest obiekt klasy Book
-        //Tutaj przekazywane są również
+    public void saveBook(List<Book> books) { //Przekazywany jako argument jest obiekt klasy Book
+        //Żeby móc używać obiektu musze go przekazac do metody
 //        System.out.println("Tytuł"+book.getTitle()+"Desc"+book.getDesc());
         //Czemu przekazuje zmienne z klasy book, zamiast pobierac metode klasy Adscraper
+
+
+
+
         try(PrintWriter out =new PrintWriter(fileName)){
-            out.println(book.getTitle()); //Wywołanie metody
-            out.println(book.getDesc());
-            out.println(book.getPrice());
+            for(Book zapis:books) {
+                out.println(zapis.getTitle()); //Wywołanie metody
+                out.println(zapis.getDesc());  //To są metody obiektu
+                out.println(zapis.getPrice());
+            }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

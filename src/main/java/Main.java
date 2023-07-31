@@ -9,20 +9,27 @@ public class Main {
          Adscraper mainScrap=new Adscraper();
 
         mainScrap.allLinks();
-        mainScrap.retrieveAll();//Zwraca liste
+//        mainScrap.retrieveAll();//Zwraca liste
         Save saveIt = new Save("Data.txt");
 
-        saveIt.saveBook();
+        List<Book> books=mainScrap.retrieveAll();
 
-        for(Book book:mainScrap.retrieveAll()){   //Czemu tutaj jest Book book i co to jest.
-            //Book to obiekt klasy Book, book to przypadkowa zmienna
-            System.out.println(book.getTitle());
-            //Pętla idzie poprzez wszystkie elementy
-            System.out.println(book.getDesc());
-            System.out.println(book.getPrice());
+        saveIt.saveBook(books);
 
-
-        }
+//        for(Book book:mainScrap.retrieveAll()){
+//            //Deklaracja obiektu
+//            //Pętla przez
+//            //Book to obiekt klasy Book, book to przypadkowa zmienna
+////            System.out.println(book.getTitle());
+////            //Pętla idzie poprzez wszystkie elementy
+////            System.out.println(book.getDesc());
+////            System.out.println(book.getPrice());
+//            saveIt.saveBook(book);
+//            //Inside book i have all the data
+//            //Musze przekazać dane, get i set
+//            //Tutaj book to jest reprezentacja wszystkich danych
+//
+//        }
 
 
 //
