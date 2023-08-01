@@ -21,7 +21,8 @@ public class Save {
         //Czemu przekazuje zmienne z klasy book, zamiast pobierac metode klasy Adscraper
 
 
-
+        ///Lepiej pojedyczna metoda do jednej ksiazki
+        //
 
         try(PrintWriter out =new PrintWriter(fileName)){
             for(Book zapis:books) {

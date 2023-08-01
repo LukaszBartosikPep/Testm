@@ -11,7 +11,7 @@ public class Adscraper {
 
     public String urls;
 
-    private String pageTitle;
+//    private String pageTitle;
     private WebDriver driver;
 
 //    public int size;  //usunac
@@ -28,12 +28,12 @@ public class Adscraper {
         driver.get("https://ksiazkipoangielsku.pl/18-adventure-novels?n=20&id_category=18");
 
 
-        List<WebElement> element = driver.findElements(By.cssSelector("div.center_block h3 a"));
+        List<WebElement> elementList = driver.findElements(By.cssSelector("div.center_block h3 a"));
 
 
 
-        for (WebElement elementy : element) {
-            urls = elementy.getAttribute("href");
+        for (WebElement element : elementList) {
+            urls = element.getAttribute("href");
 
             urlList.add(urls);
         }
@@ -80,7 +80,7 @@ public class Adscraper {
         driver.get(url);
         WebElement desc=driver.findElement(By.cssSelector("div.rte p"));
         WebElement price=driver.findElement(By.id("our_price_display"));
-        pageTitle = driver.getTitle();
+        String pageTitle = driver.getTitle();
         return new Book(pageTitle, desc.getText(), price.getText());
 
 
