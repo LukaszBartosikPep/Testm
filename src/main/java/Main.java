@@ -8,63 +8,55 @@ import java.sql.SQLException;
 public class Main {
 
 
-    public static void main(String[] args){
+    public static void main(String[] args)
+throws IOException, ClassNotFoundException {
+
+        DB con=new DB();
+        Adscraper mainScrap = new Adscraper();
+        mainScrap.allLinks();
+        List<Book> books = mainScrap.retrieveAll();
+        con.saveBookDB(books);
 
 
-        connDB con=new connDB();
 
-        con.connection();
+//
+        String desc;
+        String price;
+//
 
 
-//            throws IOException, ClassNotFoundException {
-//
-//        String desc;
-//        String price;
-//
-//        Adscraper mainScrap = new Adscraper();
-//
-//        mainScrap.allLinks();
-////        mainScrap.retrieveAll();//Zwraca liste
-//        Save saveIt = new Save("Data.txt");
-//
-//        List<Book> books = mainScrap.retrieveAll();
-//
-//        saveIt.saveBook(books);
-////        System.out.println(books);
+
 //
 //
-//        for (Book book : mainScrap.retrieveAll()) {
+        for (Book book : mainScrap.retrieveAll()) {
+//
+////            S
 ////
-//////            System.out.pshorintln(book.getTitle());
-//////
-//            desc = book.getDesc();
-//            price = book.getPrice();
-////            saveIt.saveBook(book);
-////            //Inside book i have all the data
-////            //Musze przekazać dane, get i set
-////            //Tutaj book to jest reprezentacja wszystkich danych
-////
-////        }
+            desc = book.getDesc();
+            price = book.getPrice();
 //
-//            SaveXML a = new SaveXML(desc, price);
-//
-//            FileOutputStream fos = new FileOutputStream("xyz1.xml");
-//            ObjectOutputStream oos = new ObjectOutputStream(fos);
-//            oos.writeObject(a);
-////        oos.flush();
-//
-//
-//            FileInputStream fis = new FileInputStream("xyz1.xml");
-//            ObjectInputStream ois = new ObjectInputStream(fis);
-//            SaveXML b = (SaveXML) ois.readObject();
-//
-//            System.out.println(b.desc+" "+ b.price);
-////
-////            ois.close();
-//////            oos.close();
-//////            fos.close();
 //
 //        }
+//
+            SaveXML a = new SaveXML(desc, price);
+
+            FileOutputStream fos = new FileOutputStream("xyz1.xml");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(a);
+//        oos.flush();
+
+
+            FileInputStream fis = new FileInputStream("xyz1.xml");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            SaveXML b = (SaveXML) ois.readObject();
+
+            System.out.println(b.desc+" "+ b.price);
+//
+//            ois.close();
+////            oos.close();
+////            fos.close();
+
+        }
 //
 //
 ////
