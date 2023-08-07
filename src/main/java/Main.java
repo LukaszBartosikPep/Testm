@@ -14,49 +14,50 @@ throws IOException, ClassNotFoundException {
         DB con=new DB();
         Adscraper mainScrap = new Adscraper();
         mainScrap.allLinks();
-        List<Book> books = mainScrap.retrieveAll();
-        con.saveBookDB(books);
+//        List<Book> books = mainScrap.retrieveAll();
+        con.saveBookDB(mainScrap.retrieveAll());
 
 
 
 //
         String desc;
         String price;
+        String title;
 //
 
 
 
 //
 //
-        for (Book book : mainScrap.retrieveAll()) {
-//
-////            S
+//        for (Book book : mainScrap.retrieveAll()) {
 ////
-            desc = book.getDesc();
-            price = book.getPrice();
+//////
+//            title=book.getTitle();
+//            desc = book.getDesc();
+//            price = book.getPrice();
+////
+////
+////        }
+////
+//            Book a = new Book(desc, price,title);
 //
+//            FileOutputStream fos = new FileOutputStream("xyz1.xml");
+//            ObjectOutputStream oos = new ObjectOutputStream(fos);
+//            oos.writeObject(a);
+////        oos.flush();
+//
+//
+//            FileInputStream fis = new FileInputStream("xyz1.xml");
+//            ObjectInputStream ois = new ObjectInputStream(fis);
+//            Book b = (Book) ois.readObject();
+//
+////            System.out.println(b.desc+" "+ b.price);
+////
+////            ois.close();
+//////            oos.close();
+//////            fos.close();
 //
 //        }
-//
-            SaveXML a = new SaveXML(desc, price);
-
-            FileOutputStream fos = new FileOutputStream("xyz1.xml");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(a);
-//        oos.flush();
-
-
-            FileInputStream fis = new FileInputStream("xyz1.xml");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            SaveXML b = (SaveXML) ois.readObject();
-
-            System.out.println(b.desc+" "+ b.price);
-//
-//            ois.close();
-////            oos.close();
-////            fos.close();
-
-        }
 //
 //
 ////

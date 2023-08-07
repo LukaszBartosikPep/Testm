@@ -37,7 +37,7 @@ public class Adscraper {
 
             urlList.add(urls);
         }
-        sublist = urlList.subList(urlList.size() - 5, urlList.size());
+        sublist = urlList.subList(urlList.size() - 15, urlList.size());
         sublist.clear();
 //        sublist = urlList.remove(urlList.size()-7);
 //        int size=urlList.size();

@@ -10,11 +10,10 @@ import java.sql.Statement;
 import java.util.Iterator;
 
 public class DB {
-    String name, title,desc, price,selectQuery;
-    Integer ID;
-    Statement statement=null;
-    ResultSet resultSet=null;
+//    String name, title,desc, price,selectQuery;
+
     Connection connection = null;
+    PreparedStatement insertQuery;
     public DB() {
 
 
@@ -43,20 +42,30 @@ public class DB {
 //                }
 //                System.out.println(name+ID);
 
-                statement = connection.prepareStatement();
+//                statement = connection.prepareStatement();
 
+                String title=null;
+                String desc=null;
+                String price=null;
 
-                for(Book zapis:books) {
-                    title=zapis.getTitle(); //Wywołanie metody
-                    desc=zapis.getDesc();  //To są metody obiektu
-                    price=zapis.getPrice();
+                for(Book save:books) {
+                    title=save.getTitle(); //Wywołanie metody
+                    desc=save.getDesc();  //To są metody obiektu
+                    price=save.getPrice();
                     System.out.println(title+desc+price);
 //                    selectQuery = "INSERT INTO books VALUES(1, '" + title + "', '" + desc + "', " + price + ")";
-                    selectQuery = "INSERT INTO books VALUES(1,?,?,?)";
-                    selectQuery.setObject(1,title);
-                }
-                resultSet=statement.executeQuery(selectQuery);
 
+//
+                }
+//                resultSet=statement.executeQuery(insertQuery);
+                String sql=("INSERT INTO products(title, desc, price) VALUES(?,?,?)");
+                PreparedStatement insertQuery=connection.prepareStatement(sql);
+                insertQuery.setString(1,title);
+                insertQuery.setString(2,desc);
+                insertQuery.setString(3,price);
+
+                insertQuery.execute();
+//                 int rows=insertQuery.executeUpdate();
             }catch (SQLException e){
                 e.printStackTrace();
             }

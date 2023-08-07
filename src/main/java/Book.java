@@ -1,4 +1,6 @@
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
 
     ///Czy to sluży min. do przekazywania zmiennych?
     public String title;
@@ -30,6 +32,8 @@ public class Book {
 
     }
     public String getPrice(){
+
+
         return price;
     }
 }
