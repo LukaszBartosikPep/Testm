@@ -11,7 +11,8 @@ public class Main {
     public static void main(String[] args)
 throws IOException, ClassNotFoundException {
 
-        DB con=new DB();
+        Save con=new Save();
+
         Adscraper mainScrap = new Adscraper();
         mainScrap.allLinks();
 //        List<Book> books = mainScrap.retrieveAll();

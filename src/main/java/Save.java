@@ -1,37 +1,68 @@
-import java.io.*;
 import java.util.List;
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class Save {
-    public String fileName;
+//    String name, title,desc, price,selectQuery;
 
-    public Save(String fileName) {
+    Connection connection = null;
+//    PreparedStatement insertQuery;
+    public Save() {
 
-        this.fileName=fileName;
 
+        try {
+            Class.forName("org.sqlite.JDBC");
+            String dbFile = "C:/Users/lbartosik/OneDrive - PEPCO/Dokumenty/SQL/sqlite/books";
+            connection = DriverManager.getConnection("jdbc:sqlite:" + dbFile);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
+    }
+        public void saveBookDB(List<Book> books) {
 
+            try {
+//                statement = connection.createStatement();
+//                String selectQuery="SELECT ID, Name  FROM Persons ";
+//                resultSet=statement.executeQuery(selectQuery);
+//
+//                while(resultSet.next()){
+//                    name=resultSet.getString("Name");
+//                    ID=resultSet.getInt("ID");
+//
+//                }
+//                System.out.println(name+ID);
+
+//                statement = connection.prepareStatement();
+
+                String title=null;
+                String desc=null;
+                String price=null;
+
+                for(Book save:books) {
+                    title=save.getTitle(); //Wywołanie metody
+                    desc=save.getDesc();  //To są metody obiektu
+                    price=save.getPrice();
+                    System.out.println(title+desc+price);
+//                    selectQuery = "INSERT INTO books VALUES(1, '" + title + "', '" + desc + "', " + price + ")";
 
 //
-    }
+                }
+//                resultSet=statement.executeQuery(insertQuery);
+                String sql=("INSERT INTO products(title, desc, price) VALUES(?,?,?);");
+                PreparedStatement insertQuery=connection.prepareStatement(sql);
+                insertQuery.setString(1,title);
+                insertQuery.setString(2,desc);
+                insertQuery.setString(3,price);
 
-
-
-    public void saveBook(List<Book> books) { //Przekazywany jako argument jest obiekt klasy Book
-        //Żeby móc używać obiektu musze go przekazac do metody
-//        System.out.println("Tytuł"+book.getTitle()+"Desc"+book.getDesc());
-        //Czemu przekazuje zmienne z klasy book, zamiast pobierac metode klasy Adscraper
-
-
-        ///Lepiej pojedyczna metoda do jednej ksiazki
-        //
-
-        try(PrintWriter out =new PrintWriter(fileName)){
-            for(Book zapis:books) {
-                out.println(zapis.getTitle()); //Wywołanie metody
-                out.println(zapis.getDesc());  //To są metody obiektu
-                out.println(zapis.getPrice());
+                insertQuery.execute();
+//                 int rows=insertQuery.executeUpdate();
+            }catch (SQLException e){
+                e.printStackTrace();
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         }
     }
-}
