@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        <!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 5.3//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-5.3.dtd">
+<!-- Version 8 MySQL hiberante-cfg.xml example for Hibernate 5 -->
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.driver_class">org.sqlite.JDBC</property>
+        <property name="connection.url">jdbc:sqlite:C:/Users/lbartosik/OneDrive - PEPCO/Dokumenty/SQL/sqlite/hiber.db</property>
+        <property name="connection.username"></property>
+        <property name="connection.password"></property>
+        <property name="dialect">org.hibernate.dialect.SQLiteDialect</property>
+
+
+
+
+
+        <property name="hbm2ddl.auto">update</property>
+        <mapping resource="HiberBook.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
