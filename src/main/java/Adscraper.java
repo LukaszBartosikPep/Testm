@@ -37,7 +37,7 @@ public class Adscraper {
 
             urlList.add(urls);
         }
-        sublist = urlList.subList(urlList.size() - 15, urlList.size());
+        sublist = urlList.subList(urlList.size() - 13, urlList.size());
         sublist.clear();
 //        sublist = urlList.remove(urlList.size()-7);
 //        int size=urlList.size();
@@ -81,7 +81,8 @@ public class Adscraper {
         WebElement desc=driver.findElement(By.cssSelector("div.rte p"));
         WebElement price=driver.findElement(By.id("our_price_display"));
         String pageTitle = driver.getTitle();
-        return new Book(pageTitle, desc.getText(), price.getText());
+        int id=101;
+        return new Book(pageTitle, desc.getText(), price.getText(), id);
 
 
 

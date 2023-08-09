@@ -7,7 +7,9 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-public class Main {
+import org.hibernate.cfg.Configuration;
+
+public class Main  {
 
 
     public static void main(String[] args)
@@ -18,42 +20,52 @@ throws IOException, ClassNotFoundException {
         Adscraper mainScrap = new Adscraper();
         mainScrap.allLinks();
 //
-    StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-    Metadata meta=new MetadataSources(ssr).getMetadataBuilder().build();
-    SessionFactory factory=meta.getSessionFactoryBuilder().build();
-    Session session=factory.openSession();
-    Transaction t=session.beginTransaction();
+//    StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().configure().build();
+//    Metadata meta=new MetadataSources(ssr).getMetadataBuilder().build();
+
+       Conf conf=new Conf();
+
+       conf.conf();
 
 
-    HiberBook hiber=new HiberBook();
+        HiberBook hiber=new HiberBook();
 
 
+        Book book=new Book(null,null, "test",1);
 
-System.out.println(hiber.getTitle());
+        conf(session).save(book);
+//        hiber.setTitle("Set");
+//
+//        System.out.println(hiber.getTitle());
 
+//        for (Book book : mainScrap.retrieveAll()){
+//            Book book1=new Book(book.getTitle(),book.getDesc(),book.getPrice());
+//            session.save(book1);
+//
+//        }
 //
 
 //
 
 
-
 //
 //
-        for (Book book : mainScrap.retrieveAll()) {
-//
+//        for (Book book : mainScrap.retrieveAll()) {
 ////
-
-            hiber.setId(101);
-            hiber.setTitle(book.getTitle());
-            hiber.setDesc(book.getDesc());
-            hiber.setPrice(book.getPrice());
+//////
 //
-//
-        }
-
-
-        session.save(hiber);
+//            hiber.setId(101);
+//            hiber.setTitle(book.getTitle());
+//            hiber.setDesc(book.getDesc());
+//            hiber.setPrice(book.getPrice());
+//            session.save(hiber);
+//            System.out.println(book.getTitle());
+////
+//        }
         t.commit();
+
+
+
         factory.close();
         session.close();
 ////
