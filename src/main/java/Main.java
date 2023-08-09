@@ -31,7 +31,7 @@ throws IOException, ClassNotFoundException {
         HiberBook hiber=new HiberBook();
 
 
-        Book book=new Book(null,null, "test",1);
+        Book book=new Book(null,null, null,1);
 
         conf(session).save(book);
 //        hiber.setTitle("Set");
