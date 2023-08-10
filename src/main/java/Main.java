@@ -23,28 +23,29 @@ throws IOException, ClassNotFoundException {
 //    StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().configure().build();
 //    Metadata meta=new MetadataSources(ssr).getMetadataBuilder().build();
 
-       Conf conf=new Conf();
+       ConfDB conf=new ConfDB();
+        conf.getFromDB();
 
-       conf.conf();
-
-
-        HiberBook hiber=new HiberBook();
+//       conf.conf();
 
 
-        Book book=new Book(null,null, null,1);
+//        HiberBook hiber=new HiberBook();
 
-        conf(session).save(book);
+
+//        Book book=new Book(null,null, null,1);
+
+//        conf(session).save(book);
 //        hiber.setTitle("Set");
 //
 //        System.out.println(hiber.getTitle());
 
 //        for (Book book : mainScrap.retrieveAll()){
-//            Book book1=new Book(book.getTitle(),book.getDesc(),book.getPrice());
-//            session.save(book1);
+////            Book book1=new Book(book.getTitle(),book.getDesc(),book.getPrice());
+//            conf.saveToDB(book);
 //
 //        }
-//
 
+        conf.close();
 //
 
 
@@ -62,12 +63,12 @@ throws IOException, ClassNotFoundException {
 //            System.out.println(book.getTitle());
 ////
 //        }
-        t.commit();
+//        t.commit();
 
 
 
-        factory.close();
-        session.close();
+//        factory.close(); ///inna metoda close
+
 ////
 //            Book a = new Book(desc, price,title);
 //

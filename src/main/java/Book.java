@@ -1,14 +1,27 @@
+import javax.persistence.*;
 import java.io.Serializable;
-
+@Entity
+@Table(name = "test")
 public class Book  {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    public int id;
     ///Czy to sluży min. do przekazywania zmiennych?
+    @Column(name = "title")
     public String title;
+
+
+    @Column(name="desc")
     public String desc;
+    @Column(name="price")
 
     public String price;
-    public int id;
 
+
+    public Book(){
+
+    }
 
 
     public Book(String title, String desc,String price, int id){
