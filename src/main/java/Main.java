@@ -24,7 +24,7 @@ throws IOException, ClassNotFoundException {
 //    Metadata meta=new MetadataSources(ssr).getMetadataBuilder().build();
 
        ConfDB conf=new ConfDB();
-        conf.getFromDB();
+        conf.collectFromDB();;
 
 //       conf.conf();
 

@@ -23,7 +23,7 @@ public class ConfDB {
             t.commit();
             session.close();
         }
-        public void getFromDB(){
+        public void collectFromDB(){
 
             Session session = factory.openSession();
             Transaction t= session.beginTransaction();
@@ -31,9 +31,10 @@ public class ConfDB {
             String hql= "FROM Book";
             List<Book> list=session.createQuery(hql).list();
 //            List<Book> result=query.list();
+            String content=list.toString();
             t.commit();
             session.close();
-            System.out.println(list);
+            System.out.println(content);
         }
         public void close(){
             factory.close();
