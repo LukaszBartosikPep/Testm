@@ -24,8 +24,10 @@ throws IOException, ClassNotFoundException {
 //    Metadata meta=new MetadataSources(ssr).getMetadataBuilder().build();
 
        ConfDB conf=new ConfDB();
-        conf.collectFromDB();;
-
+        ;
+//        conf.findByAuthor();
+        String contain= conf.findByAuthor();
+        conf.collectFromDB(contain);
 //       conf.conf();
 
 
