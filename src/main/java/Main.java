@@ -15,19 +15,23 @@ public class Main  {
     public static void main(String[] args)
 throws IOException, ClassNotFoundException {
 
-//        Save con=new Save();
+
 
         Adscraper mainScrap = new Adscraper();
         mainScrap.allLinks();
 //
-//    StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().configure().build();
-//    Metadata meta=new MetadataSources(ssr).getMetadataBuilder().build();
+//
 
        ConfDB conf=new ConfDB();
-        ;
-//        conf.findByAuthor();
-        String contain= conf.findByAuthor();
-        conf.collectFromDB(contain);
+
+
+//        String title= conf.findByAuthor();
+           //Tutaj
+        String collectedTitle=conf.collectTitleDB("sklep KsiążkiPoAngielsku.pl - Steward Chris Driving over lemons");
+        String collectedPrice =conf.collectPriceDB("6,00zł");
+        System.out.println(collectedTitle);
+        System.out.println(collectedPrice);
+
 //       conf.conf();
 
 
