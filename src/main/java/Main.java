@@ -1,5 +1,7 @@
 import java.io.*;
-
+import java.util.List;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.StaxDriver;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -9,11 +11,13 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import javax.xml.bind.JAXBException;
+
 public class Main  {
 
 
     public static void main(String[] args)
-throws IOException, ClassNotFoundException {
+            throws IOException, ClassNotFoundException, JAXBException {
 
 
 
@@ -21,16 +25,32 @@ throws IOException, ClassNotFoundException {
         mainScrap.allLinks();
 //
 //
+//        XStream xstream = new XStream();
+//        XStream xsstream = new XStream(new StaxDriver());
 
        ConfDB conf=new ConfDB();
+//            String title;
+//            String price;
+        List<Book> book =conf.collectTokensDB("sklep KsiążkiPoAngielsku.pl - Steward Chris Driving over lemons","6,00zł" );
+//        System.out.println(book);
+        SaveToXML stx=new SaveToXML();
+        stx.save(book);
+//        String dataXml=xstream.toXML(book);
+//        System.out.println(dataXml);
+//        for(Book book: conf.collectTokensDB("sklep KsiążkiPoAngielsku.pl - Steward Chris Driving over lemons","6,00zł" )){
+////           title=book.getTitle();
+//           price= book.getPrice();
+//
+//            System.out.println(price);
+//        }
 
 
 //        String title= conf.findByAuthor();
            //Tutaj
-        String collectedTitle=conf.collectTitleDB("sklep KsiążkiPoAngielsku.pl - Steward Chris Driving over lemons");
-        String collectedPrice =conf.collectPriceDB("6,00zł");
-        System.out.println(collectedTitle);
-        System.out.println(collectedPrice);
+//        String collectedTitle=conf.collectTitleDB("sklep KsiążkiPoAngielsku.pl - Steward Chris Driving over lemons");
+//        String collectedPrice =conf.collectPriceDB("6,00zł");
+//        System.out.println(collectedTitle);
+//        System.out.println(collectedPrice);
 
 //       conf.conf();
 
