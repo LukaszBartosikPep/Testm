@@ -1,7 +1,4 @@
-import javax.persistence.*;
-import java.io.Serializable;
-
-public class Book  {
+public class BookXML {
 
     public int id;
     ///Czy to sluży min. do przekazywania zmiennych?
@@ -16,17 +13,17 @@ public class Book  {
     public String price;
 
 
-    public Book(){
+//    public Book(){
+//
+//    }
 
-    }
 
+    public BookXML(){
 
-    public Book(String title, String desc,String price, int id){
-
-        this.title=title;
-        this.desc=desc;
-        this.price=price;
-        this.id=id;
+//        this.title=title;
+//        this.desc=desc;
+//        this.price=price;
+//        this.id=id;
 
     }
 
@@ -73,9 +70,9 @@ public class Book  {
 
     public String toString() {
         return "Book{" +
-                "id=" + id +
+//                "id=" + id +
                 ", title='" + title + '\'' +
-                ", desc='" + desc + '\'' +
+//                ", desc='" + desc + '\'' +
                 ", price='" + price + '\'' +
 
                 '}';

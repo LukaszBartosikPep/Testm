@@ -21,8 +21,8 @@ public class Main  {
 
 
 
-        Adscraper mainScrap = new Adscraper();
-        mainScrap.allLinks();
+//        Adscraper mainScrap = new Adscraper();
+//        mainScrap.allLinks();
 //
 //
 //        XStream xstream = new XStream();
@@ -32,9 +32,21 @@ public class Main  {
 //            String title;
 //            String price;
         List<Book> book =conf.collectTokensDB("sklep KsiążkiPoAngielsku.pl - Steward Chris Driving over lemons","6,00zł" );
-//        System.out.println(book);
+        System.out.println(book);
+        conf.close();
         SaveToXML stx=new SaveToXML();
-        stx.save(book);
+        stx.save();
+//        String title;
+//        for (Book book: conf.collectTokensDB("sklep KsiążkiPoAngielsku.pl - Steward Chris Driving over lemons","6,00zł" )){
+//            title=book.getTitle();
+//
+//            System.out.println(title);
+//        }
+
+
+
+
+
 //        String dataXml=xstream.toXML(book);
 //        System.out.println(dataXml);
 //        for(Book book: conf.collectTokensDB("sklep KsiążkiPoAngielsku.pl - Steward Chris Driving over lemons","6,00zł" )){
@@ -71,7 +83,7 @@ public class Main  {
 //
 //        }
 
-        conf.close();
+
 //
 
 

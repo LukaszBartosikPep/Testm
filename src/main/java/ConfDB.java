@@ -44,18 +44,20 @@ public class ConfDB {
 //
         Session session = factory.openSession();
 //
-        Query queryT =session.createQuery("FROM Book WHERE title= :title");        //Powinno być *.
+        Query query =session.createQuery("FROM Book WHERE price= :price");
+//        Query query =session.createQuery("FROM Book WHERE price= :price AND title= :title");//Powinno być *.
 //
-        queryT.setParameter("title",title);
-
-        Query queryP=session.createQuery("FROM Book WHERE price= :price");   ///Całe obiekty, powinno zwracac wszystko.
-        queryP.setParameter("price", price);
+//        query.setParameter("title",title);
+        query.setParameter("price", price);
+        //ONE query usage
+//        Query queryP=session.createQuery("FROM Book WHERE price= :price");   ///Całe obiekty, powinno zwracac wszystko.
+//
 //
 //        listOfTokens=queryT.list();
 //        listOfTokens=queryP.list();
 //        listOfTokens.add(queryT);
-        listOfTokens.addAll(queryT.list());
-        listOfTokens.addAll(queryP.list());
+        listOfTokens.addAll(query.list());
+//        listOfTokens.addAll(queryP.list());
 
         
 //        String titles = listOfTitles.toString();
