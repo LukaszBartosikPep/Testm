@@ -35,7 +35,7 @@ public class Main  {
         System.out.println(book);
         conf.close();
         SaveToXML stx=new SaveToXML();
-        stx.save();
+        stx.save(book);
 //        String title;
 //        for (Book book: conf.collectTokensDB("sklep KsiążkiPoAngielsku.pl - Steward Chris Driving over lemons","6,00zł" )){
 //            title=book.getTitle();

@@ -14,42 +14,70 @@ public class SaveToXML {
 
 
 
-    public void save()throws  IOException{
-        ConfDB conf=new ConfDB();
-        String title=null;
-        String price=null;
-        String desc = null;
-        int id = 0;
-        BookXML booksXML=new BookXML();
-        for (Book book: conf.collectTokensDB("sklep KsiążkiPoAngielsku.pl - Steward Chris Driving over lemons","6,00zł" )){
-            title=book.getTitle();
-            price=book.getPrice();
-            desc=book.getDesc();
-            id=book.getId();
-//            System.out.println(title+price+desc);
-            booksXML.setId(id);
-            booksXML.setTitle(title);
-            booksXML.setDesc(desc);
-            booksXML.setPrice(price);
+    public void save(List<Book> booksList)throws  IOException{
+//        ConfDB conf=new ConfDB();
+//        String dataXml="";
+//
+//        int id = 0;
+//        BookXML booksXML=new BookXML();
+        XStream xstream = new XStream();
+        FileWriter writer= new FileWriter("file.xml");
+        for (Book book:booksList){ //Operuje zarazem na klasie jak i na liście
+            Book bokObj =new Book(); ///Zła praktyka?
+
+            bokObj.setTitle(book.getTitle());  //Do obiektu klasy Book dodaje geter listy Book.
+            bokObj.setDesc(book.getDesc());
+            bokObj.setPrice(book.getPrice());
+            bokObj.setId(book.getId());
+            String dataXml=xstream.toXML(bokObj);
+//        System.out.println(dataXml);
+            writer.write(dataXml);
+              ///To do pętli
+
+
+
 
         }
 
+        writer.flush();   //To po pętli
+        writer.close();
 
+//        Book bok=new Book();
+//        for (Book book: books){
+//            book.setTitle();     // To jest metoda klasy Book, wywołana obiektem.
+//            book.setId();           //Jak moge przekazac elementy listy do seter.
+//            book.setPrice();
+//            book.setDesc();
 
+//            price=book.getPrice();
+//            desc=book.getDesc();
+//            id=book.getId();
+            ///Jedna klasa Book.
+            //Powinno przekazywac cala liste
 
+//            System.out.println(title+price+desc);
+           ;
+//            booksXML.setId(id);
+//            booksXML.setTitle(title);
+//            booksXML.setDesc(desc);
+//            booksXML.setPrice(price);
+
+//        }
+            //Stream przez pętlą
+
+        ///W
+//        String dataXml=xstream.toXML(bok);
+////        System.out.println(dataXml);
+//        FileWriter writer= new FileWriter("file.xml");
+//        writer.write(dataXml);  ///To do pętli
+//        writer.flush();   //To po pętli
+//        writer.close();
 
 
 //        books.setTitle();
 
 //        XStream xstream = new XStream();
-        XStream xstream = new XStream();
 
-        String dataXml=xstream.toXML(booksXML);
-//        System.out.println(dataXml);
-        FileWriter writer= new FileWriter("file.xml");
-        writer.write(dataXml);
-        writer.flush();
-        writer.close();
 
 
 
