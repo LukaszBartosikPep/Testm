@@ -81,8 +81,8 @@ public class Adscraper {
         WebElement desc=driver.findElement(By.cssSelector("div.rte p"));
         WebElement price=driver.findElement(By.id("our_price_display"));
         String pageTitle = driver.getTitle();
-        int id=101;
-        return new Book(pageTitle, desc.getText(), price.getText(), id);
+
+        return new Book (pageTitle, desc.getText(), price.getText());
 
 
 

@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.util.List;
 import java.io.IOException;
+import java.util.ArrayList;
 public class SaveToXML {
 
 
@@ -22,14 +23,18 @@ public class SaveToXML {
 //        BookXML booksXML=new BookXML();
         XStream xstream = new XStream();
         FileWriter writer= new FileWriter("file.xml");
-        for (Book book:booksList){ //Operuje zarazem na klasie jak i na liście
-            Book bokObj =new Book(); ///Zła praktyka?
 
-            bokObj.setTitle(book.getTitle());  //Do obiektu klasy Book dodaje geter listy Book.
-            bokObj.setDesc(book.getDesc());
-            bokObj.setPrice(book.getPrice());
-            bokObj.setId(book.getId());
-            String dataXml=xstream.toXML(bokObj);
+
+
+        for (Book book:booksList){    //Dla kazdego kroku jeden obiekt  //Operuje zarazem na klasie jak i na liście
+//            Book bokObj =new Book(); ///Zła praktyka?
+
+//            book.setTitle(book.getTitle());  //Do obiektu klasy Book dodaje geter listy Book.
+//            bokObj.setDesc(book.getDesc());
+//            bokObj.setPrice(book.getPrice());   //
+//            bokObj.setId(book.getId());            ///Po kolei kazdy obiekt, na kazdej iteracji inny BookA.-Tak dziala petla foreach
+                                                    //
+            String dataXml=xstream.toXML(book);
 //        System.out.println(dataXml);
             writer.write(dataXml);
               ///To do pętli

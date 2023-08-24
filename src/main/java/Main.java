@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.List;
+import java.util.ArrayList;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 import org.hibernate.Session;
@@ -21,9 +22,10 @@ public class Main  {
 
 
 
-//        Adscraper mainScrap = new Adscraper();
-//        mainScrap.allLinks();
-//
+        Adscraper mainScrap = new Adscraper();
+
+       mainScrap.allLinks();
+       List<Book> reboks= mainScrap.retrieveAll();
 //
 //        XStream xstream = new XStream();
 //        XStream xsstream = new XStream(new StaxDriver());
@@ -31,11 +33,26 @@ public class Main  {
        ConfDB conf=new ConfDB();
 //            String title;
 //            String price;
-        List<Book> book =conf.collectTokensDB("sklep KsiążkiPoAngielsku.pl - Steward Chris Driving over lemons","6,00zł" );
-        System.out.println(book);
+//        List<Book> books =conf.collectTokensDB("sklep KsiążkiPoAngielsku.pl - Steward Chris Driving over lemons","6,00zł" );
+//        System.out.println(books);
+
+
+        Book books=new Book();
+
+//        books.setId(0);
+
+        //Saving list from scrapper to DB.
+       for(Book book: reboks){
+           conf.saveToDB(book);
+
+
+
+
+       }
+//        conf.saveToDB(get);
         conf.close();
         SaveToXML stx=new SaveToXML();
-        stx.save(book);
+//        stx.save(book);
 //        String title;
 //        for (Book book: conf.collectTokensDB("sklep KsiążkiPoAngielsku.pl - Steward Chris Driving over lemons","6,00zł" )){
 //            title=book.getTitle();

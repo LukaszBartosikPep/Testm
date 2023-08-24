@@ -4,9 +4,9 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.Query;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+//import javax.xml.bind.annotation.XmlElement;
+//import javax.xml.bind.annotation.XmlRootElement;
+//import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 //import javax.persistence.Query;
 import java.util.List;
@@ -17,6 +17,9 @@ public class ConfDB {
     SessionFactory factory;
 //    public List<Book> listOfBooks = new ArrayList<>();   //Usunąć. Czy opisuje klase?
 
+    //The table creation query
+//    create table warehouse(id integer primary key autoincrement, title varchar(255), desc varchar(255), price varchar(255));
+//create table third(title varchar(255), desc varchar(255), price varchar(255));
 
     public ConfDB() {
         Configuration configuration = new org.hibernate.cfg.Configuration().configure();
@@ -28,6 +31,7 @@ public class ConfDB {
         Transaction t = session.beginTransaction();
 
         session.save(book);
+
         t.commit();
         session.close();
     }
@@ -39,16 +43,16 @@ public class ConfDB {
     public List<Book> collectTokensDB(String title, String price) {
 //        List<Book> listOfTitle= null;
 //        List<Book> listOfPrice= null;
-        List<Book> listOfTokens=new ArrayList<>();
         //Najlepiej return
 //
-        Session session = factory.openSession();
+        Session session = factory.openSession();   //Co to jest
 //
-        Query query =session.createQuery("FROM Book WHERE price= :price");
+//        Query query =session.createQuery("SELECT b.id, b.title, b.desc,b.price FROM Book b");
+        Query query =session.createQuery("FROM Book");
 //        Query query =session.createQuery("FROM Book WHERE price= :price AND title= :title");//Powinno być *.
 //
 //        query.setParameter("title",title);
-        query.setParameter("price", price);
+//        query.setParameter("price", price);
         //ONE query usage
 //        Query queryP=session.createQuery("FROM Book WHERE price= :price");   ///Całe obiekty, powinno zwracac wszystko.
 //
@@ -56,8 +60,8 @@ public class ConfDB {
 //        listOfTokens=queryT.list();
 //        listOfTokens=queryP.list();
 //        listOfTokens.add(queryT);
+        List<Book> listOfTokens = new ArrayList<>();
         listOfTokens.addAll(query.list());
-//        listOfTokens.addAll(queryP.list());
 
         
 //        String titles = listOfTitles.toString();

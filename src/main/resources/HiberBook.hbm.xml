@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration">
 
 <hibernate-mapping>
-    <class name="Book" table="test">
+    <class name="Book" table="warehouse">
         <id name="id">
             <generator class="assigned"></generator>
         </id>
