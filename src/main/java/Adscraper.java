@@ -21,7 +21,7 @@ public class Adscraper {
         System.setProperty("webdriver.ie.driver", "C:/Users/lbartosik/OneDrive - PEPCO/Pulpit/IEDriverServer.exe");
         this.driver = new InternetExplorerDriver();
 
-//        String driver ="OK";
+//
     }
     public void allLinks() {
 
@@ -39,9 +39,7 @@ public class Adscraper {
         }
         sublist = urlList.subList(urlList.size() - 13, urlList.size());
         sublist.clear();
-//        sublist = urlList.remove(urlList.size()-7);
-//        int size=urlList.size();
-//        System.out.println(urlList);
+
 
 
         }
@@ -55,17 +53,10 @@ public class Adscraper {
 
 
                  nList.add(retrieveBook(url));     //Dodaje do nowej listy wszystkie desc i title.
-                //ur jest w tym przypadku wszystkie url po kolei z urlList.
+                //url jest w tym przypadku wszystkie url po kolei z urlList.
             }
 
-        return nList;    //Zwrócona lista jest typu Book
-
-        //Przez wszystkie linki i pobierac jedna ksiazke
-            //Zapsiywac do nowej listy
-        //Jaką tu dać pętle
-        //For loop for all links
-            //and return to Main
-            //Przypisac do nowej listy za pomoca petli.
+        return nList;
 
 
 
@@ -75,7 +66,7 @@ public class Adscraper {
 
 //    }
 
-    public Book retrieveBook(String url){ //Ta metoda kiedy jest uruchamiana przekazuje zmienne do Book.
+    public Book retrieveBook(String url){
         //
         driver.get(url);
         WebElement desc=driver.findElement(By.cssSelector("div.rte p"));

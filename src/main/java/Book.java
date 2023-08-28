@@ -6,9 +6,9 @@ import javax.persistence.*;
 public class Book  {
     @Id
     @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    public Integer id=null;
-    ///Czy to sluży min. do przekazywania zmiennych?
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id=null;
+
 
     public String title;
 
@@ -30,18 +30,18 @@ public class Book  {
         this.title=title;
         this.desc = desc;
         this.price=price;
-//        this.id=id;
+
 
     }
 
 
 
-    public Integer getId(){
+    public Long getId(){
 
         return id;
     }
 
-    public void setId(Integer id){
+    public void setId(Long id){
         this.id=id;
 
 
@@ -53,7 +53,7 @@ public class Book  {
 
 
 
-        ///Better change value with setters
+
         return title;
     }
     public void setTitle(String title){
